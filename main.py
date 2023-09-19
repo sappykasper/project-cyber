@@ -1,7 +1,7 @@
 import redis
 from flask import Flask
 
-redis_cache = redis.Redis(host='localhost', port=6379, db=0, password='redis_password')
+redis_cache = redis.Redis(host='localhost', port=6379, db=0)
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ def visit(user):
         pass
     else:
         # value = redis_cache.set(user)
-        value = redis_cache.hincrby(user)
+        value = redis_cache.incr(user)
     return 'OK'
 
 @app.route('/show/<string:user>')
