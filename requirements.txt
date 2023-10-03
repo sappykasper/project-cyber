@@ -1,14 +1,4 @@
 Flask==2.2.5
-Flask-And-Redis==1.0.0
-Flask-AppBuilder==4.3.1
-Flask-Babel==2.0.0
-Flask-Caching==2.0.2
-Flask-JWT-Extended==4.5.2
-Flask-Limiter==3.3.1
-Flask-Login==0.6.2
-Flask-Session==0.5.0
-Flask-SQLAlchemy==2.5.1
-Flask-WTF==1.1.1
 hiredis==2.2.3
 python-dotenv==1.0.0
 redis==5.0.0
