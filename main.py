@@ -1,18 +1,20 @@
 import redis
 from flask import Flask
 
-redis_cache = redis.Redis(host='localhost', port=6379, db=0)
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")  # config = {"USER": "foo", "EMAIL": "foo@example.org"}
+print(config['url_redis'])
+print(config['url_host'])
+
+# redis_cache = redis.Redis(host='localhost', port=6379, db=0)
+redis_cache = redis.from_url(str(config['url_redis']))
 
 app = Flask(__name__)
 
 @app.route('/visit/<string:user>')
 def visit(user):
-    if redis_cache.exists(user):
-        value = redis_cache.get(user)
-        pass
-    else:
-        # value = redis_cache.set(user)
-        value = redis_cache.incr(user)
+    value = redis_cache.incr(user)
     return 'OK'
 
 @app.route('/show/<string:user>')
@@ -22,4 +24,6 @@ def show(user):
     else:
         return f'{user} is not exists'
 
-app.run('127.0.0.1', port='9111', debug=True)
+if __name__ == '__main__':
+    # app.run('127.0.0.1', port='9111', debug=True)
+    app.run(config['url_host'], config['port'], config['debug'])
