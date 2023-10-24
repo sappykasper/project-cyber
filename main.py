@@ -19,13 +19,17 @@ app = Flask(__name__)
 
 @app.route('/visit/<string:user>')
 def visit(user):
-    '''function visit user'''
+    """
+    high level support for doing this and that.
+    """
     redis_cache.incr(user)
     return 'OK'
 
 @app.route('/show/<string:user>')
 def show(user):
-    '''function show user'''
+    """
+    high level support for doing this and that.
+    """
     if redis_cache.exists(user):
         return redis_cache.get(user)
     return f'{user} is not exists'
