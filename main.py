@@ -1,4 +1,6 @@
-#  high level support for doing this and that.
+"""
+high level support for doing this and that.
+"""
 
 import os
 import redis
