@@ -30,4 +30,3 @@ def show(user):
 
 if __name__ == '__main__':
     app.run(config['url_host'], config['port'], config['debug'])
-   
