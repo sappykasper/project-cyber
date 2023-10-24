@@ -20,7 +20,7 @@ app = Flask(__name__)
 @app.route('/visit/<string:user>')
 def visit(user):
    '''function visit user'''
-    value = redis_cache.incr(user)
+    redis_cache.incr(user)
     return 'OK'
 
 @app.route('/show/<string:user>')
