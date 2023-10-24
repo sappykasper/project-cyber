@@ -26,8 +26,7 @@ def visit(user):
 def show(user):
     if redis_cache.exists(user):
         return redis_cache.get(user)
-    else:
-        return f'{user} is not exists'
+    return f'{user} is not exists'
 
 if __name__ == '__main__':
     app.run(config['url_host'], config['port'], config['debug'])
