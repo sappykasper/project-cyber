@@ -1,3 +1,5 @@
+#  high level support for doing this and that.
+
 import os
 import redis
 from flask import Flask
